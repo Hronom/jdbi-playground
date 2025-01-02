@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: ${OTEL_SERVICE_NAME:jdbi-playground}
+  main:
+    banner-mode: off
+  datasource:
+    primary:
+      url: jdbc:postgresql://localhost:5432/dev_jdbi_playground
+#      url: jdbc:postgresql://localhost:5432/dev_jdbi_playground?reWriteBatchedInserts=true
+      username: postgres
+      password: postgres
+      hikari:
+        schema: dev_jdbi_playground
+#        maximum-pool-size: 1
+
+logging:
+  level:
+    com:
+      github:
+        hronom:
+          jdbi_playground:
+            service:
+              CustomSqlLogger: debug

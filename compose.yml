@@ -1,0 +1,14 @@
+services:
+  jdbi-playground-postgresql:
+    container_name: jdbi-playground-postgresql
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    command: ["postgres", "-c", "log_statement=all"]
+    ports:
+      - "5432:5432"
+    volumes:
+      - type: bind
+        source: ./postgresql_init_scripts/init.sql
+        target: /docker-entrypoint-initdb.d/init.sql
